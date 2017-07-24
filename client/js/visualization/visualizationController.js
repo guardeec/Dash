@@ -45,6 +45,10 @@ setTimeout(function () {
                 drawScatterPlot3D(item.div, item.container);
                 break;
             }
+            case "Voronoi":{
+                drawVoronoi(item.div, item.container);
+                break;
+            }
             default: {
                 break;
             }

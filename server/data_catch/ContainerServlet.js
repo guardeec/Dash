@@ -2,6 +2,7 @@
  * Created by Guardeec on 11.07.17.
  */
 let containersExamples = require('./ContainersExamples');
+let parser = require('./DataParser');
 let apis = [];
 
 Meteor.setInterval(function () {
@@ -28,7 +29,7 @@ Meteor.setInterval(function () {
                         res.end(example);
                     } else {
                         try {
-                            let data = JSON.parse(query.data);
+                            let data = parser.parse(query.data, container);
                             let id = Containers.find({name: container}).fetch()[0]._id;
                             Containers.update({_id: id}, {$set: {data: data}});
                             res.end("done");

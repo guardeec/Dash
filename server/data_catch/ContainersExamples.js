@@ -63,6 +63,10 @@ function getScatterPlot3DExample() {
     return JSON.stringify(scatterPlot3D, null, '\t');
 }
 
+function getVoronoiExample() {
+    return "{\"nodes\":[{\"name\":\"0\"},{\"name\":\"1\"},{\"name\":\"2\"},{\"name\":\"3\"},{\"name\":\"4\"},{\"name\":\"5\"}],\"links\":[{\"from\":{\"name\":\"0\"},\"to\":{\"name\":\"1\"}},{\"from\":{\"name\":\"0\"},\"to\":{\"name\":\"2\"}},{\"from\":{\"name\":\"1\"},\"to\":{\"name\":\"3\"}},{\"from\":{\"name\":\"1\"},\"to\":{\"name\":\"4\"}},{\"from\":{\"name\":\"1\"},\"to\":{\"name\":\"5\"}}]}\n";
+}
+
 function containersExamplesByTypeRouter (containerType) {
     switch (containerType){
         case "Pie Chart" :
@@ -79,6 +83,8 @@ function containersExamplesByTypeRouter (containerType) {
             return getGraphExample();
         case "Scatter Plot 3D" :
             return getScatterPlot3DExample();
+        case "Voronoi" :
+            return getVoronoiExample();
         default :
             return "undefined container type";
     }
