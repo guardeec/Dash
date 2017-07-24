@@ -1,0 +1,65 @@
+<template name="addVisModelButton">
+    <a href="#addVisModal" class="btn btn-primary navbar-btn" data-toggle="modal">Add model</a>
+</template>
+
+<template name="addVisModelWindow">
+    <div id="addVisModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Добавить новую модель</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Select type:</label>
+                    <select class="form-control" id="addVisModel_typeSelect">
+                        {{> selectTypeInput}}
+                    </select>
+
+                    <label>Select name:</label>
+                    <input type="text" class="form-control" id="addVisModel_widgetNameField">
+                    <label>Select container:</label>
+                    <select class="form-control" id="addVisModel_selContainerBasedType">
+                        {{>selectContainerInput_basedType}}
+                    </select>
+                    <label for="selRadio">Select size:</label>
+                    <div class="container-fluid" id="selRadio">
+                        <div class="radio text-center">
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="1x1">1x1</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="2x1">2x1</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="3x1">3x1</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="4x1">4x1</label>
+                        </div>
+                        <div class="radio text-center">
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="1x2">1x2</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="2x2">2x2</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="3x2">3x2</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="4x2">4x2</label>
+                        </div>
+                        <div class="radio text-center">
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="1x3">1x3</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="2x3">2x3</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="3x3">3x3</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="4x3">4x3</label>
+                        </div>
+                        <div class="radio text-center">
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="1x3">1x4</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="1x3">2x4</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="1x3">3x4</label>
+                            <label class="radio-inline"><input type="radio" name="sizeRadio" value="4x3">4x4</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="addVisModelBtn">Добавить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+

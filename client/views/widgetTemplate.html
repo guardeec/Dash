@@ -1,0 +1,19 @@
+<template name="widgets">
+ <div class="grid-stack" style="margin-top:65px;">
+  {{#each widget}}
+    {{> widgetItem}}
+  {{/each}}
+ </div>
+</template>
+
+<template name="widgetItem">
+ <div class="grid-stack-item" id="{{_id}}" data-gs-x="{{x}}" data-gs-y="{{y}}"  data-gs-no-resize="1" data-gs-width="{{width}}" data-gs-height="{{height}}">
+    <div class="grid-stack-item-content" style="box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); background-color: white; border-radius: 3px;">
+      {{> chart}}
+    </div>
+ </div>
+</template>
+
+<template name="chart">
+  <div id="{{name}}" type="{{type}}" container="{{container}}" style="margin: 10px 10px 10px 10px; text-align:center; "></div>
+</template>

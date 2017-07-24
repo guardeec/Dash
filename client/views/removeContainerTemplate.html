@@ -1,0 +1,29 @@
+<template name="removeContainerButton">
+    <a href="#removeContainerModal" class="btn btn-danger navbar-btn" data-toggle="modal">Remove container</a>
+</template>
+
+<template name="removeContainerWindow">
+    <div id="removeContainerModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Удалить контейнер</h4>
+                </div>
+                <div class="modal-body">
+
+                    <label for="removeContainer">Select widget:</label>
+                    <select class="form-control" id="removeContainer_selectContainer">
+                        {{> selectContainerInput}}
+                    </select>
+                </div>
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="removeContainerBtn">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

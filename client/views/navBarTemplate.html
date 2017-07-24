@@ -1,0 +1,27 @@
+<template name="navBar">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Comsec Dash</a>
+    </div>
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        {{#each page}}
+          {{> pageItem}}
+        {{/each}}
+      </ul>
+      {{>addVisModelButton}}
+      {{>removeVisModelButton}}
+      {{>addContainerButton}}
+      {{>removeContainerButton}}
+    </div>
+  </div>
+</nav>
+{{>addVisModelWindow}}
+{{>removeVisModelWindow}}
+{{>addContainerWindow}}
+{{>removeContainerWindow}}
+</template>
+<template name="pageItem">
+  <li><a href="#">{{name}}</a></li>
+</template>

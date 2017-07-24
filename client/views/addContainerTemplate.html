@@ -1,0 +1,33 @@
+<template name="addContainerButton">
+    <a href="#addContainerModal" class="btn btn-primary navbar-btn" data-toggle="modal">Create Container</a>
+</template>
+
+<template name="addContainerWindow">
+    <div id="addContainerModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Создать контейнер</h4>
+                </div>
+                <div class="modal-body">
+
+                    <label for="containerType">Select type:</label>
+                    <select class="form-control" id="addContainer_typeSelect">
+                        {{> selectTypeInput}}
+                    </select>
+                    <label for="containerNameF">Select name:</label>
+                    <input type="text" class="form-control" id="addContainer_containerNameField">
+
+                </div>
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="addContainerBtn">Создать</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+

@@ -1,0 +1,39 @@
+<template name="selectTypeInput">
+        <option>Line Chart</option>
+        <option>Bar Chart</option>
+        <option>Pie Chart</option>
+        <option>Spline Chart</option>
+        <option>Gauge Chart</option>
+        <option>Graph</option>
+        <option>Scatter Plot 3D</option>
+</template>
+
+
+<template name="selectContainerInput_basedType">
+        {{#each containerBasedType}}
+            {{> containerItemBasedType}}
+        {{/each}}
+</template>
+<template name="containerItemBasedType">
+    <option>{{name}}</option>
+</template>
+
+<template name="selectContainerInput">
+        {{#each container}}
+            {{> containerItem}}
+        {{/each}}
+</template>
+<template name="containerItem">
+    <option>{{name}}</option>
+</template>
+
+<template name="selectWidgetInput">
+        {{#each widget}}
+            {{> widgetItemParams}}
+        {{/each}}
+
+</template>
+<template name="widgetItemParams">
+    <option>{{name}}</option>
+</template>
+
