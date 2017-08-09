@@ -67,6 +67,17 @@ function getVoronoiExample() {
     return "{\"nodes\":[{\"name\":\"0\"},{\"name\":\"1\"},{\"name\":\"2\"},{\"name\":\"3\"},{\"name\":\"4\"},{\"name\":\"5\"}],\"links\":[{\"from\":{\"name\":\"0\"},\"to\":{\"name\":\"1\"}},{\"from\":{\"name\":\"0\"},\"to\":{\"name\":\"2\"}},{\"from\":{\"name\":\"1\"},\"to\":{\"name\":\"3\"}},{\"from\":{\"name\":\"1\"},\"to\":{\"name\":\"4\"}},{\"from\":{\"name\":\"1\"},\"to\":{\"name\":\"5\"}}]}\n";
 }
 
+function getWindRoseExample() {
+    let metrics = ["metric1", "metric2", "metric3"];
+    let maxValues = [50, 50, 50];
+    let elements = [
+        {"name" : "user1", "values" : [10, 30, 27]},
+        {"name" : "user2", "values" : [15, 10, 47]}
+    ];
+    let res = {"metrics" : metrics, "max" : maxValues, "elements" : elements}
+    return JSON.stringify(res, null, '\t');
+}
+
 function containersExamplesByTypeRouter (containerType) {
     switch (containerType){
         case "Pie Chart" :
@@ -85,6 +96,8 @@ function containersExamplesByTypeRouter (containerType) {
             return getScatterPlot3DExample();
         case "Voronoi" :
             return getVoronoiExample();
+        case "Wind Rose" :
+            return getWindRoseExample();
         default :
             return "undefined container type";
     }

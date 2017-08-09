@@ -49,6 +49,10 @@ setTimeout(function () {
                 drawVoronoi(item.div, item.container);
                 break;
             }
+            case "Wind Rose":{
+                drawWindRose(item.div, item.container);
+                break;
+            }
             default: {
                 break;
             }

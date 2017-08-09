@@ -26,6 +26,7 @@ Meteor.setInterval(function () {
                     if (query.data === undefined) {
                         let containerType = Containers.find({name:container}).fetch()[0].type;
                         let example = containersExamples.containersExamplesByTypeRouter(containerType);
+                        console.log(example);
                         res.end(example);
                     } else {
                         try {
