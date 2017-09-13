@@ -1,0 +1,82 @@
+<template name="nmap">
+    {{>navBar}}
+    {{>makeAgent}}
+    {{>agentsList}}
+</template>
+
+<template name="makeAgent">
+    <div style="padding-top: 63px">
+        <div class="well">
+            <div class="container ">
+                <div class="row">
+                    <div class="col" style="text-align: center">
+                        <h1><label >Новый агент Nmap</label></h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Select name:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Select location:</label>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="addAgentName_Field">
+                    </div>
+                    <div class="col-md-4">
+
+                        <input type="text" class="form-control" id="addAgentLocation_Field">
+                    </div>
+                    <div class="col-md-4" style="text-align: center">
+                        <button id="addAgentBtn" type="button" class="btn btn-primary">Add Agent</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="agentsList">
+
+    <div class="container">
+        <table id="agentsListTable" class="table table-striped" style="table-layout: fixed">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each agent}}
+                {{> agentItem}}
+            {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+
+</template>
+
+<template name="agentItem">
+    <tr>
+        <td style="width: 25%">{{name}}</td>
+        <td style="width: 25%">{{location}}</td>
+        {{#if isTrue status}}
+            <td style="width: 25%;">
+                <span class="label label-info">Online</span>
+            </td>
+        {{else}}
+            <td style="width: 25%;">
+                <span class="label label-danger">Offline</span>
+            </td>
+        {{/if}}
+
+        <td style="width: 25%"><button id="deleteAgentBtn" type="button" class="btn btn-danger">Delete Agent</button></td>
+    </tr>
+</template>

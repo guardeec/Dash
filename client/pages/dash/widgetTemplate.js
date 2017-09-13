@@ -4,8 +4,8 @@ Template.widgets.helpers({
     }
 });
 
-setTimeout(myTimer, 500);
-function myTimer() {
+setTimeout(drawWidgets, 500);
+function drawWidgets () {
     $(function () {
         let options = {
             cell_height: 100,
@@ -26,7 +26,9 @@ function myTimer() {
             });
         });
     });
-}
+};
+
+
 
 
 

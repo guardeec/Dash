@@ -10,18 +10,11 @@
           {{> pageItem}}
         {{/each}}
       </ul>
-      {{>addVisModelButton}}
-      {{>removeVisModelButton}}
-      {{>addContainerButton}}
-      {{>removeContainerButton}}
     </div>
   </div>
 </nav>
-{{>addVisModelWindow}}
-{{>removeVisModelWindow}}
-{{>addContainerWindow}}
-{{>removeContainerWindow}}
+
 </template>
 <template name="pageItem">
-  <li><a href="#">{{name}}</a></li>
+  <li><a target="_self" href="{{url}}">{{name}}</a></li>
 </template>
