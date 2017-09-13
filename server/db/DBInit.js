@@ -1,28 +1,51 @@
 if (Pages.find().count() === 0) {
   Pages.insert({
-    name: 'Page 1'
+      name: 'Dashboard',
+      url: "/"
   });
 
   Pages.insert({
-    name: 'Page 2'
+      name: 'Nmap',
+      url: "/nmap"
   });
 
   Pages.insert({
-    name: 'Page 3'
+      name: 'Settings',
+      url: "/settings"
+  });
+}
+
+if(Files.find().count() === 0){
+  Files.insert({
+     name: "agentTemplate",
+     file: Assets.getText('agentTemplate.js')
+  });
+}
+
+if(RawData.find().count() === 0){
+  RawData.insert({
+      name: "network",
+      data: "{}"
+  });
+}
+
+if(Settings.find().count() === 0){
+  Settings.insert({
+     serverUrl: "http://91.151.187.30:1111/"
   });
 }
 
 if (Widgets.find().count() === 0) {
 
-  // Widgets.insert({
-  //   type: "Pie Chart",
-  //   width: "3",
-  //   height: "3",
-  //   name: "pie1",
-  //   x: 0,
-  //   y: 0,
-  //   container: "packagesCounter"
-  // });
+  Widgets.insert({
+    type: "Pie Chart",
+    width: "3",
+    height: "3",
+    name: "pie1",
+    x: 0,
+    y: 0,
+    container: "packagesCounter"
+  });
   //
   // Widgets.insert({
   //   type: "Bar Chart",
