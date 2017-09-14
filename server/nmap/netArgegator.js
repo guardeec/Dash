@@ -23,15 +23,26 @@ function makeOneNet() {
     agents.forEach((agent, a) => {
         if (agent.data!==undefined){
             agent.data.hosts.forEach((host, i) =>{
-                if(host.deviceType==="routed host"){
-                    host.key = "routed "+host.ip;
-                    agent.data.hosts[i].key = host.key;
-                }else {
-                    host.key = agent.data.hosts[0].mac+" "+host.ip;
-                    agents[a].data.hosts[i].key = host.key;
-                    agent.data.hosts[i].key = host.key;
+                switch (host.deviceType){
+                    case "root" : {
+                        host = {ip:"localhost", deviceType:"root", key: "root"};
+                        agent.data.hosts[i] = host;
+                        break;
+                    }
+                    case "routedHost" : {
+                        host.key = "routed "+host.ip;
+                        agent.data.hosts[i].key = host.key;
+                        break;
+                    }
+                    default : {
+                        host.key = agent.data.hosts[0].mac+" "+host.ip;
+                        agents[a].data.hosts[i].key = host.key;
+                        break;
+                    }
                 }
-                if (!hostsToAgregate.some(item=>{return item.key===host.key;})){
+
+                if (!hostsToAgregate.some(item=>{return item.key===host.key ;})){
+
                     hostsToAgregate.push(host);
                 }
             });
