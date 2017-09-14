@@ -40,23 +40,3 @@ Meteor.setInterval(function () {
         apis.push(agent);
     });
 }, 5000);
-
-//
-// function removeRouteByName(routeName) {
-//     let routes = Router.routes;
-//     console.log(routes[0].getName());
-//     let route = routes[routeName];
-//     if (!route) return false;  // Returns false if route is not found
-//
-//     // Remove route from Router
-//     delete routes[routeName];
-//     delete routes._byPath[route.path()];
-//     let routeIndex = routes.indexOf(route);
-//     if (routeIndex >= 0) routes.splice(routeIndex, 1);
-//
-//     // Remove route handler from MiddleWareStack
-//     delete Router._stack._stack[routeName];
-//     Router._stack.length -= 1;
-//
-//     return true;  // Returns true when route is removed
-// }

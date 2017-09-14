@@ -1,6 +1,6 @@
 Meteor.setInterval(function () {
     updateAgentsStatus();
-    makeOneNet();
+    //makeOneNet();
     //Agents.find().map(item => {return item.name;});
     //let agentsData = Agents.find().map(item => {return item.name;});
 
@@ -17,33 +17,49 @@ function updateAgentsStatus() {
 }
 
 function makeOneNet() {
+    let agents = Agents.find();
 
-
-
-    let net = [];
-
-    Agents.find().forEach(item => {
-        if (item.data!==undefined){
-            let router = item.data.hosts.find(host=>{
-                return host.ip===item.data.router;
-            });
-
-            item.data.hosts.forEach(host=>{
-                if(router!==host){
-                    host.parentRouter = router;
-                    net.push({
-                        from: host,
-                        to: router
-                    });
+    let hostsToAgregate = [];
+    agents.forEach(agent => {
+        if (agent.data!==undefined){
+            let hosts = agent.data.hosts;
+            hosts.forEach(host=>{
+                host.key = hosts[0].mac+" "+host.ip;
+                if (!hostsToAgregate.some(item=>{return item.key===host.key;})){
+                    hostsToAgregate.push(host);
                 }
             });
-            net.push({
-                from: router,
-                to: "out"
-            })
         }
     });
-    RawData.update({_id: RawData.findOne({name: "network"})._id}, {$set: {data: net}});
+    let linksToAgregate = [];
+    agents.forEach(agent=>{
+        if (agent.data!==undefined){
+            let links = agent.data.links;
+            let hosts = agent.data.hosts;
+            links.forEach(link=>{
+                let from = hosts[link.from];
+                let to = hosts[link.to];
+                from = getIndexByHostKey(from, hostsToAgregate);
+                to = getIndexByHostKey(to, hostsToAgregate);
+                linksToAgregate.push({from:from,to:to});
+            });
+        }
+    });
+
+    function getIndexByHostKey(host, hosts) {
+        for (let i=0; i<hosts.length; i++){
+            if (hosts[i].key===host.key){
+                return i;
+            }
+        }
+    }
+
+
+
+    RawData.update({_id: RawData.findOne({name: "network"})._id}, {$set: {data: {
+        hosts: hostsToAgregate,
+        links: linksToAgregate
+    }}});
 }
 
 function test() {
