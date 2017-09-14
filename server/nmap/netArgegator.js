@@ -17,16 +17,19 @@ function updateAgentsStatus() {
 }
 
 function makeOneNet() {
-    let agents = Agents.find();
+    let agents = Agents.find().fetch();
 
     let hostsToAgregate = [];
-    agents.forEach(agent => {
+    agents.forEach((agent, a) => {
         if (agent.data!==undefined){
-            agent.data.hosts.forEach(host=>{
+            agent.data.hosts.forEach((host, i) =>{
                 if(host.deviceType==="routed host"){
                     host.key = "routed "+host.ip;
+                    agent.data.hosts[i].key = host.key;
                 }else {
                     host.key = agent.data.hosts[0].mac+" "+host.ip;
+                    agents[a].data.hosts[i].key = host.key;
+                    agent.data.hosts[i].key = host.key;
                 }
                 if (!hostsToAgregate.some(item=>{return item.key===host.key;})){
                     hostsToAgregate.push(host);
@@ -58,16 +61,8 @@ function makeOneNet() {
     }
 
 
-
     RawData.update({_id: RawData.findOne({name: "network"})._id}, {$set: {data: {
         hosts: hostsToAgregate,
         links: linksToAgregate
     }}});
-}
-
-function test() {
-    exec = Npm.require('child_process').exec;
-    cmd = Meteor.wrapAsync(exec);
-    let res = cmd("traceroute 8.8.8.8");
-    console.log(res);
 }
