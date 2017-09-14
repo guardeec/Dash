@@ -1,6 +1,6 @@
 Meteor.setInterval(function () {
     updateAgentsStatus();
-    //makeOneNet();
+    makeOneNet();
     //Agents.find().map(item => {return item.name;});
     //let agentsData = Agents.find().map(item => {return item.name;});
 
