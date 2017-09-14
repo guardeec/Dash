@@ -94,6 +94,15 @@ drawGraph = function (div, container) {
             .enter().append("g")
             .attr("class", "node")
             .call(force.drag);
+
+        let tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) {
+                return "<span style='color:#CCC'>" + d.id.split("/n").join("<br>") + "</span>";
+            });
+        svg.call(tip);
+
         node
             .append("circle")
             .attr("class", "node")
@@ -102,16 +111,8 @@ drawGraph = function (div, container) {
             .attr("r", function (d) {return Math.sqrt(linearScaleNodeSize(d.s) / Math.PI);})
             .style("fill", function (d) {return "#" + d.color;})
             .call(force.drag)
-            .text(function (d) {return d.id;});
-        node.append("text")
-            .attr("dx", 12)
-            .attr("dy", ".35em")
-            .text(function(d) { return d.id });
-
-
-
-
-
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
 
         //силовая отрисовка на каждый тик
         force.on("tick", function () {
@@ -157,7 +158,7 @@ drawGraph = function (div, container) {
         let newGraph = getDataGraph(container);
         newGraphAddCoords(newGraph, oldGraph);
         draw(newGraph);
-    }, 1000);
+    }, 30000);
 };
 
 function newGraphAddCoords(newGraph, oldGraph) {

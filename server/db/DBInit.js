@@ -107,9 +107,9 @@ if (Containers.find().count() === 0) {
 //  });
   
   Containers.insert({
-    type: "Pie Chart",
-    name: "packagesCounter",
-    data: {"2048" : 57, "2054" : 10}
+        type: "Pie Chart",
+        name: "packagesCounter",
+        data: {"2048" : 57, "2054" : 10}
   });
 
 }
