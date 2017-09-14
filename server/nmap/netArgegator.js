@@ -22,9 +22,12 @@ function makeOneNet() {
     let hostsToAgregate = [];
     agents.forEach(agent => {
         if (agent.data!==undefined){
-            let hosts = agent.data.hosts;
-            hosts.forEach(host=>{
-                host.key = hosts[0].mac+" "+host.ip;
+            agent.data.hosts.forEach(host=>{
+                if(host.deviceType==="routed host"){
+                    host.key = "routed "+host.ip;
+                }else {
+                    host.key = agent.data.hosts[0].mac+" "+host.ip;
+                }
                 if (!hostsToAgregate.some(item=>{return item.key===host.key;})){
                     hostsToAgregate.push(host);
                 }
