@@ -34,7 +34,8 @@ if(Settings.find().count() === 0){
      serverUrl: "http://91.151.187.30:1111/",
       graphSettings:{
           linksDistance: 10,
-          charge: -300
+          charge: -300,
+          updateTime: 10
       }
   });
 }
