@@ -31,7 +31,11 @@ if(RawData.find().count() === 0){
 
 if(Settings.find().count() === 0){
   Settings.insert({
-     serverUrl: "http://91.151.187.30:1111/"
+     serverUrl: "http://91.151.187.30:1111/",
+      graphSettings:{
+          linksDistance: 10,
+          charge: -300
+      }
   });
 }
 

@@ -1,0 +1,52 @@
+<template name="graphSettingsButton">
+    <a href="#graphSettingsModal" class="btn btn-primary navbar-btn" data-toggle="modal">Graph settings</a>
+</template>
+
+<template name="graphSettingsWindow">
+    <div id="graphSettingsModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Настройки графа</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div>
+                        <div style="margin-bottom: 5px">
+                            <label>Charge: </label>
+                            {{>chargeLabel}}
+                        </div>
+                    </div>
+                    {{>chargeSlider}}
+                    <div>
+                        <div style="margin-bottom: 5px">
+                            <label>Link Distance: </label>
+                            {{>linkDistanceLabel}}
+                        </div>
+                    </div>
+                    {{>linkDistanceSlider}}
+                </div>
+
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="chargeLabel">
+    <label class="label label-primary" style="margin-left: 5px;">{{charge}}</label>
+</template>
+<template name="chargeSlider">
+    <input id="chargeSliderSettings" class="slider" type="range" min="-1000" max="-1" step="10"  value="{{charge}}"/>
+</template>
+<template name="linkDistanceLabel">
+    <label class="label label-primary" style="margin-left: 5px;">{{linksDistance}}</label>
+</template>
+<template name="linkDistanceSlider">
+    <input id="linkDistanceSliderSettings" class="slider" type="range" min="1" max="100" step="1"  value="{{linksDistance}}"/>
+</template>

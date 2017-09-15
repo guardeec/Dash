@@ -146,7 +146,9 @@
         <item url="file://$USER_HOME$/.meteor/packages/promise/0.8.9/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/promise/0.8.9/web.browser/server.js" />
         <item url="file://$USER_HOME$/.meteor/packages/promise/0.8.9/web.browser/promise-tests.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/kidovate_bootstrap-slider/0.0.5/web.browser/packages/kidovate:bootstrap-slider/slider/css/slider.css" />
         <item url="file://$USER_HOME$/.meteor/packages/mizzao_build-fetcher/0.2.0/web.browser/packages/mizzao:build-fetcher.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/kidovate_bootstrap-slider/0.0.5/web.browser/packages/kidovate:bootstrap-slider.js" />
         <item url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui.js" />
         <item url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui/jquery-ui.css" />
         <item url="file://$USER_HOME$/.meteor/packages/ejson/1.0.13/web.browser/stringify.js" />
@@ -411,7 +413,9 @@
       <root url="file://$USER_HOME$/.meteor/packages/promise/0.8.9/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/promise/0.8.9/web.browser/server.js" />
       <root url="file://$USER_HOME$/.meteor/packages/promise/0.8.9/web.browser/promise-tests.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/kidovate_bootstrap-slider/0.0.5/web.browser/packages/kidovate:bootstrap-slider/slider/css/slider.css" />
       <root url="file://$USER_HOME$/.meteor/packages/mizzao_build-fetcher/0.2.0/web.browser/packages/mizzao:build-fetcher.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/kidovate_bootstrap-slider/0.0.5/web.browser/packages/kidovate:bootstrap-slider.js" />
       <root url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui.js" />
       <root url="file://$USER_HOME$/.meteor/packages/mizzao_jquery-ui/1.11.4/web.browser/packages/mizzao_jquery-ui/jquery-ui.css" />
       <root url="file://$USER_HOME$/.meteor/packages/ejson/1.0.13/web.browser/stringify.js" />

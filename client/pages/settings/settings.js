@@ -18,6 +18,44 @@ Template.selectContainerInput.helpers({
     }
 });
 
+Template.chargeSlider.helpers({
+    charge: function () {
+        return Settings.findOne({}).graphSettings.charge;
+    }
+});
+Template.chargeLabel.helpers({
+    charge: function () {
+        return Settings.findOne({}).graphSettings.charge;
+    }
+});
+Template.linkDistanceSlider.helpers({
+    linksDistance: function () {
+        return Settings.findOne({}).graphSettings.linksDistance;
+    }
+});
+Template.linkDistanceLabel.helpers({
+    linksDistance: function () {
+        return Settings.findOne({}).graphSettings.linksDistance;
+    }
+});
+
+Template.chargeSlider.events({
+    'change input[type=range]': function(event){
+        let sliderValue = event.currentTarget.value;
+        let s = Settings.findOne({});
+        s.graphSettings.charge = sliderValue;
+        Settings.update({_id: s._id}, s);
+    }
+});
+Template.linkDistanceSlider.events({
+    'change input[type=range]': function(event){
+        let sliderValue = event.currentTarget.value;
+        let s = Settings.findOne({});
+        s.graphSettings.linksDistance = sliderValue;
+        Settings.update({_id: s._id}, s);
+    }
+});
+
 Template.settings.events({
     'click #addVisModelBtn': function (e) {
         let type = $('#addVisModel_typeSelect').find(":selected").text();

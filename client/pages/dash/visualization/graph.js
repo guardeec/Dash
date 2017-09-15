@@ -58,26 +58,13 @@ drawGraph = function (div, container) {
             .attr("width", width)
             .attr("height", height);
 
-         force = d3.layout.force()
-            //.charge(-60)
-            .charge(function (d) {
-                //return -30;
-                return  (Math.pow(linearScaleDistance(d.s), 2))/2*-1;
-            })
-            .linkStrength(0)
-            .linkDistance(function (d) {
-                return 100
-                //return  (linearScaleDistance(d.source.s)+linearScaleDistance(d.target.s))/2;
-            })
+        force = d3.layout.force()
+            .charge(Settings.findOne({}).graphSettings.charge)
+            .linkDistance(Settings.findOne({}).graphSettings.linksDistance)
             .size([width, height])
             .nodes(graph.nodes)
             .links(graph.links)
             .start();
-
-        // force.linkDistance(function (d) {
-        //     console.log(d);
-        //     return  40;
-        // });
 
         //инит линков
         let link = svg.selectAll(".link")
@@ -158,7 +145,7 @@ drawGraph = function (div, container) {
         let newGraph = getDataGraph(container);
         newGraphAddCoords(newGraph, oldGraph);
         draw(newGraph);
-    }, 30000);
+    }, 5000);
 };
 
 function newGraphAddCoords(newGraph, oldGraph) {
