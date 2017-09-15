@@ -38,6 +38,16 @@ Template.linkDistanceLabel.helpers({
         return Settings.findOne({}).graphSettings.linksDistance;
     }
 });
+Template.updateTimeGraphLabel.helpers({
+    updateTime: function () {
+        return Settings.findOne({}).graphSettings.updateTime;
+    }
+});
+Template.updateTimeGraphSlider.helpers({
+    updateTime: function () {
+        return Settings.findOne({}).graphSettings.updateTime;
+    }
+});
 
 Template.chargeSlider.events({
     'change input[type=range]': function(event){
@@ -52,6 +62,14 @@ Template.linkDistanceSlider.events({
         let sliderValue = event.currentTarget.value;
         let s = Settings.findOne({});
         s.graphSettings.linksDistance = sliderValue;
+        Settings.update({_id: s._id}, s);
+    }
+});
+Template.updateTimeGraphSlider.events({
+    'change input[type=range]': function(event){
+        let sliderValue = event.currentTarget.value;
+        let s = Settings.findOne({});
+        s.graphSettings.updateTime = sliderValue;
         Settings.update({_id: s._id}, s);
     }
 });

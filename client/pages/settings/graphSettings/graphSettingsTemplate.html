@@ -20,13 +20,20 @@
                         </div>
                     </div>
                     {{>chargeSlider}}
-                    <div>
+                    <div style="padding-top: 10px">
                         <div style="margin-bottom: 5px">
                             <label>Link Distance: </label>
                             {{>linkDistanceLabel}}
                         </div>
                     </div>
                     {{>linkDistanceSlider}}
+                    <div style="padding-top: 10px">
+                        <div style="margin-bottom: 5px">
+                            <label>Update Time: </label>
+                            {{>updateTimeGraphLabel}}
+                        </div>
+                    </div>
+                    {{>updateTimeGraphSlider}}
                 </div>
 
                 <!-- Футер модального окна -->
@@ -49,4 +56,10 @@
 </template>
 <template name="linkDistanceSlider">
     <input id="linkDistanceSliderSettings" class="slider" type="range" min="1" max="100" step="1"  value="{{linksDistance}}"/>
+</template>
+<template name="updateTimeGraphLabel">
+    <label class="label label-primary" style="margin-left: 5px;">{{updateTime}}</label>
+</template>
+<template name="updateTimeGraphSlider">
+    <input id="updateTimeGraphSliderSettings" class="slider" type="range" min="5" max="600" step="5"  value="{{updateTime}}"/>
 </template>

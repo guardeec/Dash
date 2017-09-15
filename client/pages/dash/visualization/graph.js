@@ -48,6 +48,8 @@ drawGraph = function (div, container) {
     let oldGraph;
     let force;
 
+    let tip;
+
     function draw(graph) {
         let linearScaleNodeSize = getLinearScaleForGraphNodesSize(graph, 50, 500);
         let linearScaleDistance = getLinearScaleForGraphNodesSize(graph, 10, 50);
@@ -82,7 +84,7 @@ drawGraph = function (div, container) {
             .attr("class", "node")
             .call(force.drag);
 
-        let tip = d3.tip()
+        tip = d3.tip()
             .attr('class', 'd3-tip')
             .offset([-10, 0])
             .html(function(d) {
@@ -125,6 +127,7 @@ drawGraph = function (div, container) {
         oldGraph = graph;
     }
 
+
     draw(graph);
 
 
@@ -140,11 +143,20 @@ drawGraph = function (div, container) {
     });
 
 
+
     //обновление данных
+    let updateCounter = 0;
     setInterval(function () {
-        let newGraph = getDataGraph(container);
-        newGraphAddCoords(newGraph, oldGraph);
-        draw(newGraph);
+        console.log(updateCounter+" "+Settings.findOne({}).graphSettings.updateTime);
+        if(updateCounter<Settings.findOne({}).graphSettings.updateTime){
+            updateCounter+=5;
+        }else {
+            updateCounter=5;
+            tip.hide();
+            let newGraph = getDataGraph(container);
+            newGraphAddCoords(newGraph, oldGraph);
+            draw(newGraph);
+        }
     }, 5000);
 };
 
